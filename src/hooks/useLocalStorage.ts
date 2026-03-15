@@ -10,7 +10,7 @@ export function useLocalStorage<T>(key: string, defaultValue: T): [T, (val: T | 
     }
   });
 
-  const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   useEffect(() => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
