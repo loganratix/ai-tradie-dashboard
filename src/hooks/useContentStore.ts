@@ -21,14 +21,16 @@ export function useContentStore() {
     DEFAULT_STATE
   );
 
-  // Seed on first load if empty
+  // Seed on first load if empty, or re-seed if version is outdated
   const seeded = useRef(false);
   useEffect(() => {
-    if (!seeded.current && state.content.length === 0) {
-      seeded.current = true;
-      setState((prev) => ({ ...prev, content: SEED_CONTENT }));
+    if (!seeded.current) {
+      if (state.content.length === 0 || state.version < 2) {
+        seeded.current = true;
+        setState(() => ({ content: SEED_CONTENT, activeWeek: getWeekId(), version: 2 }));
+      }
     }
-  }, [state.content.length, setState]);
+  }, [state.content.length, state.version, setState]);
 
   const setActiveWeek = useCallback(
     (weekId: string) => {
@@ -137,6 +139,7 @@ export function useContentStore() {
             title: p.title || 'Untitled',
             hook: p.hook || '',
             body: p.body || '',
+            caption: p.caption || '',
             filmingNotes: p.filmingNotes || '',
             format: p.format || 'reel',
             pillar: p.pillar || 'ai-tools',

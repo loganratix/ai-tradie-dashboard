@@ -25,6 +25,7 @@ export interface ContentPiece {
   title: string;
   hook: string;
   body: string;
+  caption: string;
   filmingNotes: string;
   format: ContentFormat;
   pillar: ContentPillar;

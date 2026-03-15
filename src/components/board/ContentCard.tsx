@@ -213,6 +213,28 @@ export function ContentCard({
             </div>
           )}
 
+          {piece.caption && (
+            <div style={{ marginBottom: '14px', paddingTop: '12px', borderTop: '1px solid #1a1a1a' }}>
+              <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '1px', color: '#22c55e', marginBottom: '6px' }}>
+                Caption (copy-paste ready)
+              </p>
+              <div
+                style={{
+                  fontSize: '13px',
+                  lineHeight: 1.7,
+                  color: '#ccc',
+                  whiteSpace: 'pre-wrap',
+                  padding: '12px',
+                  background: '#0a0a0a',
+                  border: '1px solid #222',
+                  borderRadius: '8px',
+                }}
+              >
+                {piece.caption}
+              </div>
+            </div>
+          )}
+
           {/* Notes input */}
           <div style={{ marginBottom: '14px', paddingTop: '12px', borderTop: '1px solid #1a1a1a' }}>
             <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '1px', color: '#666', marginBottom: '6px' }}>
