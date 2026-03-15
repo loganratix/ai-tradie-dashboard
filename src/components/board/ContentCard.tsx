@@ -14,27 +14,29 @@ import { MetricsForm } from './MetricsForm';
 
 interface ContentCardProps {
   piece: ContentPiece;
+  index: number;
   onStatusChange: (id: string, status: ContentStatus) => void;
   onMetricsChange: (id: string, metrics: PerformanceMetrics) => void;
   onNotesChange: (id: string, notes: string) => void;
   onDelete: (id: string) => void;
 }
 
-const FW_COLORS: Record<string, string> = {
-  komadina: 'var(--fw-komadina)',
-  hormozi: 'var(--fw-hormozi)',
-  explorer: 'var(--fw-explorer)',
+const FW_COLORS: Record<string, { color: string; bg: string; border: string }> = {
+  komadina: { color: '#a5b4fc', bg: '#1a1a2e', border: '#6366f140' },
+  hormozi: { color: '#fca5a5', bg: '#1a1a1a', border: '#ef444440' },
+  explorer: { color: '#86efac', bg: '#0a1a0a', border: '#22c55e40' },
 };
 
-const FMT_COLORS: Record<string, string> = {
-  reel: 'var(--fmt-reel)',
-  carousel: 'var(--fmt-carousel)',
-  post: 'var(--fmt-post)',
-  story: 'var(--fmt-story)',
+const FMT_COLORS: Record<string, { color: string; bg: string; border: string }> = {
+  reel: { color: '#a78bfa', bg: '#7c3aed20', border: '#7c3aed40' },
+  carousel: { color: '#93c5fd', bg: '#2563eb20', border: '#2563eb40' },
+  post: { color: '#6ee7b7', bg: '#05966920', border: '#05966940' },
+  story: { color: '#fcd34d', bg: '#f59e0b20', border: '#f59e0b40' },
 };
 
 export function ContentCard({
   piece,
+  index,
   onStatusChange,
   onMetricsChange,
   onNotesChange,
@@ -42,66 +44,123 @@ export function ContentCard({
 }: ContentCardProps) {
   const [expanded, setExpanded] = useState(false);
   const nextStatus = STATUS_NEXT[piece.status];
+  const fmt = FMT_COLORS[piece.format] || FMT_COLORS.reel;
 
   return (
     <div
-      className="rounded-2xl p-4 transition-colors"
+      className="content-card relative"
       style={{
-        background: 'var(--card)',
-        border: '1px solid var(--border)',
+        background: '#111',
+        border: '1px solid #222',
+        borderRadius: '16px',
+        padding: '20px',
+        transition: 'border-color 0.2s',
       }}
+      onMouseEnter={(e) => (e.currentTarget.style.borderColor = '#444')}
+      onMouseLeave={(e) => (e.currentTarget.style.borderColor = '#222')}
     >
-      {/* Top row: status + format + framework tags */}
-      <div className="flex flex-wrap gap-1.5 mb-2">
+      {/* Card number */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '14px',
+          right: '14px',
+          width: '28px',
+          height: '28px',
+          borderRadius: '50%',
+          background: '#1a1a1a',
+          border: '1px solid #333',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '12px',
+          fontWeight: 700,
+          color: '#666',
+        }}
+      >
+        {index + 1}
+      </div>
+
+      {/* Tags row */}
+      <div style={{ display: 'flex', gap: '6px', marginBottom: '10px', flexWrap: 'wrap', paddingRight: '36px' }}>
         <StatusBadge status={piece.status} />
         <span
-          className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider"
           style={{
-            color: FMT_COLORS[piece.format],
-            background: `${FMT_COLORS[piece.format]}20`,
-            border: `1px solid ${FMT_COLORS[piece.format]}40`,
+            fontSize: '10px',
+            padding: '3px 8px',
+            borderRadius: '4px',
+            fontWeight: 600,
+            textTransform: 'uppercase' as const,
+            letterSpacing: '0.5px',
+            color: fmt.color,
+            background: fmt.bg,
+            border: `1px solid ${fmt.border}`,
           }}
         >
           {FORMAT_LABELS[piece.format]}
         </span>
-        {piece.frameworkTags.map((tag) => (
-          <span
-            key={tag}
-            className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider"
-            style={{
-              color: FW_COLORS[tag],
-              background: `${FW_COLORS[tag]}20`,
-              border: `1px solid ${FW_COLORS[tag]}40`,
-            }}
-          >
-            {FRAMEWORK_LABELS[tag]}
-          </span>
-        ))}
+        {piece.frameworkTags.map((tag) => {
+          const fw = FW_COLORS[tag] || FW_COLORS.komadina;
+          return (
+            <span
+              key={tag}
+              style={{
+                fontSize: '10px',
+                padding: '3px 8px',
+                borderRadius: '4px',
+                fontWeight: 600,
+                textTransform: 'uppercase' as const,
+                letterSpacing: '0.5px',
+                color: fw.color,
+                background: fw.bg,
+                border: `1px solid ${fw.border}`,
+              }}
+            >
+              {FRAMEWORK_LABELS[tag]}
+            </span>
+          );
+        })}
       </div>
 
       {/* Title */}
-      <h3 className="text-[15px] font-bold leading-snug mb-1.5">{piece.title}</h3>
-
-      {/* Hook preview */}
-      <p
-        className="text-[13px] italic leading-relaxed rounded-lg px-3 py-2 mb-2"
+      <h3
         style={{
-          color: 'var(--hook)',
-          background: 'rgba(251, 191, 36, 0.05)',
-          borderLeft: '2px solid rgba(251, 191, 36, 0.3)',
+          fontSize: '17px',
+          fontWeight: 700,
+          color: '#fff',
+          marginBottom: '8px',
+          lineHeight: 1.3,
+          paddingRight: '36px',
+        }}
+      >
+        {piece.title}
+      </h3>
+
+      {/* Hook */}
+      <div
+        style={{
+          fontSize: '14px',
+          color: '#fbbf24',
+          marginBottom: '10px',
+          fontStyle: 'italic',
+          lineHeight: 1.5,
+          padding: '10px 14px',
+          background: 'rgba(251, 191, 36, 0.03)',
+          borderLeft: '2px solid rgba(251, 191, 36, 0.25)',
+          borderRadius: '0 6px 6px 0',
         }}
       >
         {piece.hook}
-      </p>
+      </div>
 
-      {/* Pillar label */}
-      <p className="text-[11px] mb-2" style={{ color: 'var(--text-tertiary)' }}>
+      {/* Pillar */}
+      <p style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>
         {PILLAR_LABELS[piece.pillar]}
       </p>
 
       {/* Posted metrics summary */}
       {piece.status === 'posted' && piece.metrics && piece.metrics.views > 0 && (
-        <div className="flex gap-3 text-[11px] mb-2" style={{ color: 'var(--text-secondary)' }}>
+        <div style={{ display: 'flex', gap: '12px', fontSize: '12px', color: '#888', marginBottom: '8px' }}>
           <span>{piece.metrics.views.toLocaleString()} views</span>
           <span>{engagementRate(piece.metrics).toFixed(1)}% eng</span>
           <span>{piece.metrics.saves} saves</span>
@@ -112,8 +171,18 @@ export function ContentCard({
       {/* Expand toggle */}
       <button
         onClick={() => setExpanded(!expanded)}
-        className="flex items-center gap-1 text-[12px] font-medium"
-        style={{ color: 'var(--text-tertiary)' }}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '4px',
+          fontSize: '12px',
+          fontWeight: 500,
+          color: '#666',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: '4px 0',
+        }}
       >
         {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
         {expanded ? 'Less' : 'More'}
@@ -121,32 +190,32 @@ export function ContentCard({
 
       {/* Expanded content */}
       {expanded && (
-        <div className="mt-3">
+        <div style={{ marginTop: '12px' }}>
           {piece.body && (
-            <div className="mb-3">
-              <p className="text-[11px] font-semibold uppercase tracking-wider mb-1" style={{ color: 'var(--text-tertiary)' }}>
+            <div style={{ marginBottom: '14px' }}>
+              <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '1px', color: '#666', marginBottom: '6px' }}>
                 Script / Body
               </p>
-              <p className="text-[13px] leading-relaxed whitespace-pre-wrap" style={{ color: 'var(--text-secondary)' }}>
+              <p style={{ fontSize: '13px', lineHeight: 1.7, color: '#999', whiteSpace: 'pre-wrap' }}>
                 {piece.body}
               </p>
             </div>
           )}
 
           {piece.filmingNotes && (
-            <div className="mb-3">
-              <p className="text-[11px] font-semibold uppercase tracking-wider mb-1" style={{ color: 'var(--text-tertiary)' }}>
+            <div style={{ marginBottom: '14px', paddingTop: '12px', borderTop: '1px solid #1a1a1a' }}>
+              <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '1px', color: '#666', marginBottom: '6px' }}>
                 Filming Notes
               </p>
-              <p className="text-[13px] leading-relaxed whitespace-pre-wrap" style={{ color: 'var(--text-secondary)' }}>
+              <p style={{ fontSize: '13px', lineHeight: 1.7, color: '#999', whiteSpace: 'pre-wrap' }}>
                 {piece.filmingNotes}
               </p>
             </div>
           )}
 
           {/* Notes input */}
-          <div className="mb-3">
-            <p className="text-[11px] font-semibold uppercase tracking-wider mb-1" style={{ color: 'var(--text-tertiary)' }}>
+          <div style={{ marginBottom: '14px', paddingTop: '12px', borderTop: '1px solid #1a1a1a' }}>
+            <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase' as const, letterSpacing: '1px', color: '#666', marginBottom: '6px' }}>
               Your Notes
             </p>
             <textarea
@@ -154,10 +223,17 @@ export function ContentCard({
               onChange={(e) => onNotesChange(piece.id, e.target.value)}
               placeholder="Add observations, ideas, what worked..."
               rows={2}
-              className="w-full px-3 py-2 rounded-lg text-[13px] text-white outline-none resize-none"
               style={{
-                background: 'var(--bg)',
-                border: '1px solid var(--border)',
+                width: '100%',
+                padding: '10px 12px',
+                borderRadius: '8px',
+                fontSize: '13px',
+                color: '#e5e5e5',
+                background: '#0a0a0a',
+                border: '1px solid #222',
+                outline: 'none',
+                resize: 'none',
+                fontFamily: 'inherit',
               }}
             />
           </div>
@@ -171,12 +247,21 @@ export function ContentCard({
           )}
 
           {/* Action buttons */}
-          <div className="flex gap-2 mt-3">
+          <div style={{ display: 'flex', gap: '8px', marginTop: '14px' }}>
             {nextStatus && (
               <button
                 onClick={() => onStatusChange(piece.id, nextStatus)}
-                className="flex-1 py-2.5 rounded-lg text-[13px] font-semibold text-white"
-                style={{ background: 'var(--accent)' }}
+                style={{
+                  flex: 1,
+                  padding: '12px',
+                  borderRadius: '10px',
+                  fontSize: '13px',
+                  fontWeight: 600,
+                  color: '#fff',
+                  background: '#2563EB',
+                  border: 'none',
+                  cursor: 'pointer',
+                }}
               >
                 Mark as {STATUS_LABELS[nextStatus]}
               </button>
@@ -185,10 +270,19 @@ export function ContentCard({
               onClick={() => {
                 if (confirm('Delete this content piece?')) onDelete(piece.id);
               }}
-              className="flex items-center justify-center w-10 h-10 rounded-lg"
-              style={{ background: 'var(--bg)', border: '1px solid var(--border)' }}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '44px',
+                height: '44px',
+                borderRadius: '10px',
+                background: '#0a0a0a',
+                border: '1px solid #222',
+                cursor: 'pointer',
+              }}
             >
-              <Trash2 size={16} style={{ color: 'var(--fw-hormozi)' }} />
+              <Trash2 size={16} color="#ef4444" />
             </button>
           </div>
         </div>

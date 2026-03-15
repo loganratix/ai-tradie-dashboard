@@ -41,11 +41,12 @@ export function ContentList({
   }
 
   return (
-    <div className="flex flex-col gap-3 px-4 py-4">
-      {sorted.map((piece) => (
+    <div className="flex flex-col gap-4 px-4 py-4">
+      {sorted.map((piece, i) => (
         <ContentCard
           key={piece.id}
           piece={piece}
+          index={i}
           onStatusChange={onStatusChange}
           onMetricsChange={onMetricsChange}
           onNotesChange={onNotesChange}

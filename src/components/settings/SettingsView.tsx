@@ -44,17 +44,23 @@ export function SettingsView({
   };
 
   return (
-    <div className="px-4 py-4 flex flex-col gap-3">
+    <div style={{ padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
       {message && (
         <div
-          className="rounded-lg px-4 py-2.5 text-[13px] font-medium"
-          style={{ background: 'var(--status-posted)', color: '#000' }}
+          style={{
+            borderRadius: '10px',
+            padding: '12px 16px',
+            fontSize: '13px',
+            fontWeight: 600,
+            background: '#22c55e20',
+            color: '#86efac',
+            border: '1px solid #22c55e40',
+          }}
         >
           {message}
         </div>
       )}
 
-      {/* Export section */}
       <Section title="Export">
         <ActionButton
           icon={<Copy size={16} />}
@@ -70,7 +76,6 @@ export function SettingsView({
         />
       </Section>
 
-      {/* Import section */}
       <Section title="Import">
         <ActionButton
           icon={<Upload size={16} />}
@@ -79,14 +84,25 @@ export function SettingsView({
           onClick={() => setShowImport(!showImport)}
         />
         {showImport && (
-          <div className="mt-2">
+          <div style={{ marginTop: '10px' }}>
             <textarea
               value={importJson}
               onChange={(e) => setImportJson(e.target.value)}
               placeholder="Paste backup JSON here..."
               rows={6}
-              className="w-full px-3 py-3 rounded-lg text-[13px] text-white outline-none resize-none mb-2 font-mono"
-              style={{ background: 'var(--bg)', border: '1px solid var(--border)' }}
+              style={{
+                width: '100%',
+                padding: '12px',
+                borderRadius: '10px',
+                fontSize: '13px',
+                color: '#e5e5e5',
+                background: '#0a0a0a',
+                border: '1px solid #222',
+                outline: 'none',
+                resize: 'none',
+                fontFamily: 'monospace',
+                marginBottom: '8px',
+              }}
             />
             <button
               onClick={() => {
@@ -100,8 +116,18 @@ export function SettingsView({
                 }
               }}
               disabled={!importJson.trim()}
-              className="w-full py-2.5 rounded-lg text-[13px] font-semibold text-white disabled:opacity-40"
-              style={{ background: 'var(--accent)' }}
+              style={{
+                width: '100%',
+                padding: '12px',
+                borderRadius: '10px',
+                fontSize: '13px',
+                fontWeight: 600,
+                color: '#fff',
+                background: !importJson.trim() ? '#222' : '#2563EB',
+                border: 'none',
+                cursor: !importJson.trim() ? 'default' : 'pointer',
+                opacity: !importJson.trim() ? 0.4 : 1,
+              }}
             >
               Restore
             </button>
@@ -109,15 +135,12 @@ export function SettingsView({
         )}
       </Section>
 
-      {/* Data section */}
       <Section title="Data">
-        <div className="flex items-center justify-between py-3">
-          <div className="flex items-center gap-2">
-            <Database size={16} style={{ color: 'var(--text-tertiary)' }} />
-            <span className="text-[13px]" style={{ color: 'var(--text-secondary)' }}>
-              {allContent.length} content pieces, {storageUsed()} used
-            </span>
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', padding: '12px 0' }}>
+          <Database size={16} color="#666" />
+          <span style={{ fontSize: '13px', color: '#888' }}>
+            {allContent.length} content pieces, {storageUsed()} used
+          </span>
         </div>
         <ActionButton
           icon={<Trash2 size={16} />}
@@ -139,10 +162,23 @@ export function SettingsView({
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div
-      className="rounded-xl p-4"
-      style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
+      style={{
+        borderRadius: '16px',
+        padding: '16px',
+        background: '#111',
+        border: '1px solid #222',
+      }}
     >
-      <h3 className="text-[12px] font-semibold uppercase tracking-wider mb-3" style={{ color: 'var(--text-tertiary)' }}>
+      <h3
+        style={{
+          fontSize: '11px',
+          fontWeight: 600,
+          textTransform: 'uppercase',
+          letterSpacing: '1.5px',
+          color: '#666',
+          marginBottom: '12px',
+        }}
+      >
         {title}
       </h3>
       {children}
@@ -166,13 +202,23 @@ function ActionButton({
   return (
     <button
       onClick={onClick}
-      className="w-full text-left flex items-start gap-3 py-3 rounded-lg"
-      style={{ color: danger ? 'var(--fw-hormozi)' : 'var(--text)' }}
+      style={{
+        width: '100%',
+        textAlign: 'left',
+        display: 'flex',
+        alignItems: 'flex-start',
+        gap: '12px',
+        padding: '10px 0',
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        color: danger ? '#ef4444' : '#e5e5e5',
+      }}
     >
-      <div className="mt-0.5">{icon}</div>
+      <div style={{ marginTop: '2px' }}>{icon}</div>
       <div>
-        <p className="text-[14px] font-medium">{label}</p>
-        <p className="text-[12px] mt-0.5" style={{ color: 'var(--text-tertiary)' }}>
+        <p style={{ fontSize: '14px', fontWeight: 500 }}>{label}</p>
+        <p style={{ fontSize: '12px', marginTop: '2px', color: '#666' }}>
           {description}
         </p>
       </div>

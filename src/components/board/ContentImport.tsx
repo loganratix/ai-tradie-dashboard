@@ -29,22 +29,36 @@ export function ContentImport({ open, onClose, onImport }: ContentImportProps) {
 
   return (
     <div
-      className="fixed inset-0 z-[100] flex items-end justify-center"
-      style={{ background: 'rgba(0,0,0,0.7)' }}
+      style={{
+        position: 'fixed',
+        inset: 0,
+        zIndex: 100,
+        display: 'flex',
+        alignItems: 'flex-end',
+        justifyContent: 'center',
+        background: 'rgba(0,0,0,0.7)',
+      }}
       onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
     >
       <div
-        className="w-full max-w-lg rounded-t-2xl p-5 pb-safe"
-        style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
+        className="pb-safe"
+        style={{
+          width: '100%',
+          maxWidth: '480px',
+          borderRadius: '16px 16px 0 0',
+          padding: '20px',
+          background: '#111',
+          border: '1px solid #222',
+        }}
       >
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-base font-bold">Import Content</h2>
-          <button onClick={onClose}>
-            <X size={20} style={{ color: 'var(--text-tertiary)' }} />
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
+          <h2 style={{ fontSize: '16px', fontWeight: 700, color: '#fff' }}>Import Content</h2>
+          <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+            <X size={20} color="#666" />
           </button>
         </div>
 
-        <p className="text-[13px] mb-3" style={{ color: 'var(--text-secondary)' }}>
+        <p style={{ fontSize: '13px', marginBottom: '12px', color: '#888' }}>
           Paste JSON from Claude's /ai-tradie-content weekly output, or a full dashboard backup.
         </p>
 
@@ -53,15 +67,27 @@ export function ContentImport({ open, onClose, onImport }: ContentImportProps) {
           onChange={(e) => setJson(e.target.value)}
           placeholder='[{"title": "...", "hook": "...", "format": "reel", ...}]'
           rows={8}
-          className="w-full px-3 py-3 rounded-lg text-[13px] text-white outline-none resize-none mb-3 font-mono"
           style={{
-            background: 'var(--bg)',
-            border: '1px solid var(--border)',
+            width: '100%',
+            padding: '12px',
+            borderRadius: '10px',
+            fontSize: '13px',
+            color: '#e5e5e5',
+            background: '#0a0a0a',
+            border: '1px solid #222',
+            outline: 'none',
+            resize: 'none',
+            fontFamily: 'monospace',
+            marginBottom: '12px',
           }}
         />
 
         {message && (
-          <p className="text-[13px] mb-3" style={{ color: message.includes('Invalid') ? 'var(--fw-hormozi)' : 'var(--status-posted)' }}>
+          <p style={{
+            fontSize: '13px',
+            marginBottom: '12px',
+            color: message.includes('Invalid') ? '#ef4444' : '#86efac',
+          }}>
             {message}
           </p>
         )}
@@ -69,8 +95,18 @@ export function ContentImport({ open, onClose, onImport }: ContentImportProps) {
         <button
           onClick={handleImport}
           disabled={!json.trim()}
-          className="w-full py-3 rounded-lg text-[14px] font-semibold text-white disabled:opacity-40"
-          style={{ background: 'var(--accent)' }}
+          style={{
+            width: '100%',
+            padding: '14px',
+            borderRadius: '10px',
+            fontSize: '14px',
+            fontWeight: 600,
+            color: '#fff',
+            background: !json.trim() ? '#222' : '#2563EB',
+            border: 'none',
+            cursor: !json.trim() ? 'default' : 'pointer',
+            opacity: !json.trim() ? 0.4 : 1,
+          }}
         >
           Import
         </button>

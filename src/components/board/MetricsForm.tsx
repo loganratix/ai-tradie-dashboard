@@ -39,14 +39,14 @@ export function MetricsForm({ metrics, onSave }: MetricsFormProps) {
   };
 
   return (
-    <div className="mt-3 pt-3" style={{ borderTop: '1px solid var(--border)' }}>
-      <p className="text-[11px] font-semibold uppercase tracking-wider mb-2" style={{ color: 'var(--status-posted)' }}>
+    <div style={{ marginTop: '12px', paddingTop: '12px', borderTop: '1px solid #1a1a1a' }}>
+      <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '1px', color: '#22c55e', marginBottom: '8px' }}>
         Performance
       </p>
-      <div className="grid grid-cols-3 gap-2">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
         {FIELDS.map((f) => (
           <div key={f.key}>
-            <label className="text-[10px] block mb-1" style={{ color: 'var(--text-tertiary)' }}>
+            <label style={{ fontSize: '10px', display: 'block', marginBottom: '4px', color: '#666' }}>
               {f.label}
             </label>
             <input
@@ -55,10 +55,16 @@ export function MetricsForm({ metrics, onSave }: MetricsFormProps) {
               value={values[f.key] || ''}
               onChange={(e) => handleChange(f.key, e.target.value)}
               placeholder="0"
-              className="w-full px-2 py-2 rounded-lg text-sm text-white outline-none"
               style={{
-                background: 'var(--bg)',
-                border: '1px solid var(--border)',
+                width: '100%',
+                padding: '8px',
+                borderRadius: '8px',
+                fontSize: '14px',
+                color: '#e5e5e5',
+                background: '#0a0a0a',
+                border: '1px solid #222',
+                outline: 'none',
+                fontFamily: 'inherit',
               }}
             />
           </div>

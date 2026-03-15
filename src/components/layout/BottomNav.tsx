@@ -16,11 +16,19 @@ const tabs: { id: Tab; label: string; icon: typeof ClipboardList }[] = [
 export function BottomNav({ active, onChange }: BottomNavProps) {
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around pb-safe"
+      className="pb-safe"
       style={{
-        background: 'var(--bg)',
-        borderTop: '1px solid var(--border)',
-        paddingTop: '8px',
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        background: '#0a0a0a',
+        borderTop: '1px solid #222',
+        paddingTop: '10px',
       }}
     >
       {tabs.map((tab) => {
@@ -30,11 +38,24 @@ export function BottomNav({ active, onChange }: BottomNavProps) {
           <button
             key={tab.id}
             onClick={() => onChange(tab.id)}
-            className="flex flex-col items-center gap-1 min-w-[64px] py-1"
-            style={{ color: isActive ? 'var(--accent)' : 'var(--text-tertiary)' }}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '4px',
+              minWidth: '64px',
+              padding: '4px 0',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: isActive ? '#2563EB' : '#666',
+              transition: 'color 0.15s',
+            }}
           >
             <Icon size={22} />
-            <span className="text-[10px] font-medium">{tab.label}</span>
+            <span style={{ fontSize: '10px', fontWeight: isActive ? 600 : 500 }}>
+              {tab.label}
+            </span>
           </button>
         );
       })}
