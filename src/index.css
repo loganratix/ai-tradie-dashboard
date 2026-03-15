@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+
+:root {
+  --bg: #0a0a0a;
+  --card: #111111;
+  --border: #222222;
+  --border-hover: #444444;
+  --text: #ffffff;
+  --text-secondary: #999999;
+  --text-tertiary: #666666;
+  --accent: #2563EB;
+  --accent-hover: #1E40AF;
+  --hook: #fbbf24;
+  --status-idea: #666666;
+  --status-scripted: #fbbf24;
+  --status-filmed: #2563EB;
+  --status-posted: #22c55e;
+  --fw-komadina: #6366f1;
+  --fw-hormozi: #ef4444;
+  --fw-explorer: #22c55e;
+  --fmt-reel: #7c3aed;
+  --fmt-carousel: #2563eb;
+  --fmt-post: #059669;
+  --fmt-story: #f59e0b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.pb-safe { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+.pt-safe { padding-top: max(0px, env(safe-area-inset-top)); }
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
