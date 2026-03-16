@@ -47,6 +47,7 @@ Follow along. I'll do the testing. You just grab what's useful.
     weekId: WEEK,
     datePosted: null,
     metrics: null,
+    durationSeconds: 60,
     notes: '',
   },
   {
@@ -88,6 +89,7 @@ Which version are you right now? Be honest.
     weekId: WEEK,
     datePosted: null,
     metrics: null,
+    durationSeconds: 45,
     notes: '',
   },
   {
@@ -145,6 +147,7 @@ Save this. DM me any tool you want me to test next.
     weekId: WEEK,
     datePosted: null,
     metrics: null,
+    durationSeconds: 60,
     notes: '',
   },
   {
@@ -197,6 +200,7 @@ DM me the next tool you want me to test.
     weekId: WEEK,
     datePosted: null,
     metrics: null,
+    durationSeconds: 60,
     notes: '',
   },
   {
@@ -250,6 +254,7 @@ Comment COST and I'll show you how to work yours out.
     weekId: WEEK,
     datePosted: null,
     metrics: null,
+    durationSeconds: 60,
     notes: '',
   },
   {
@@ -287,6 +292,7 @@ Agree or disagree? Tell me in the comments.
     weekId: WEEK,
     datePosted: null,
     metrics: null,
+    durationSeconds: 30,
     notes: '',
   },
   {
@@ -340,6 +346,7 @@ And if you want me to build a version for your trade, DM me what you do. I'll ma
     weekId: WEEK,
     datePosted: null,
     metrics: null,
+    durationSeconds: 90,
     notes: '',
   },
 ];

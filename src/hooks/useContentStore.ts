@@ -149,6 +149,7 @@ export function useContentStore() {
             weekId: p.weekId || state.activeWeek,
             datePosted: p.datePosted || null,
             metrics: p.metrics || null,
+            durationSeconds: p.durationSeconds || 0,
             notes: p.notes || '',
           }));
           addContent(pieces);

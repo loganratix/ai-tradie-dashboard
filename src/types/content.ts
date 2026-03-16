@@ -18,6 +18,8 @@ export interface PerformanceMetrics {
   shares: number;
   comments: number;
   dmsReceived: number;
+  watchTimeSeconds: number;
+  profileVisits: number;
 }
 
 export interface ContentPiece {
@@ -35,6 +37,7 @@ export interface ContentPiece {
   weekId: string;
   datePosted: string | null;
   metrics: PerformanceMetrics | null;
+  durationSeconds: number;
   notes: string;
 }
 
@@ -174,4 +177,21 @@ export function shiftWeek(weekId: string, offset: number): string {
 export function engagementRate(m: PerformanceMetrics): number {
   if (m.views === 0) return 0;
   return ((m.likes + m.saves + m.shares + m.comments) / m.views) * 100;
+}
+
+export function avgWatchTime(m: PerformanceMetrics): number {
+  if (m.views === 0 || !m.watchTimeSeconds) return 0;
+  return m.watchTimeSeconds / m.views;
+}
+
+export function watchThroughRate(m: PerformanceMetrics, durationSeconds: number): number {
+  if (m.views === 0 || !m.watchTimeSeconds || durationSeconds === 0) return 0;
+  return (avgWatchTime(m) / durationSeconds) * 100;
+}
+
+export function formatSeconds(s: number): string {
+  if (s < 60) return `${s.toFixed(1)}s`;
+  const mins = Math.floor(s / 60);
+  const secs = Math.round(s % 60);
+  return `${mins}m ${secs}s`;
 }

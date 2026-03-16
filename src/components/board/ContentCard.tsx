@@ -8,6 +8,9 @@ import {
   FRAMEWORK_LABELS,
   PILLAR_LABELS,
   engagementRate,
+  avgWatchTime,
+  watchThroughRate,
+  formatSeconds,
 } from '../../types/content';
 import { StatusBadge } from './StatusBadge';
 import { MetricsForm } from './MetricsForm';
@@ -160,9 +163,17 @@ export function ContentCard({
 
       {/* Posted metrics summary */}
       {piece.status === 'posted' && piece.metrics && piece.metrics.views > 0 && (
-        <div style={{ display: 'flex', gap: '12px', fontSize: '12px', color: '#888', marginBottom: '8px' }}>
+        <div style={{ display: 'flex', gap: '12px', fontSize: '12px', color: '#888', marginBottom: '8px', flexWrap: 'wrap' }}>
           <span>{piece.metrics.views.toLocaleString()} views</span>
-          <span>{engagementRate(piece.metrics).toFixed(1)}% eng</span>
+          <span style={{ color: engagementRate(piece.metrics) >= 3 ? '#22c55e' : engagementRate(piece.metrics) >= 1 ? '#fbbf24' : '#ef4444' }}>
+            {engagementRate(piece.metrics).toFixed(1)}% eng
+          </span>
+          {piece.metrics.watchTimeSeconds > 0 && (
+            <span style={{ color: watchThroughRate(piece.metrics, piece.durationSeconds || 0) >= 50 ? '#22c55e' : watchThroughRate(piece.metrics, piece.durationSeconds || 0) >= 30 ? '#fbbf24' : '#ef4444' }}>
+              {formatSeconds(avgWatchTime(piece.metrics))} avg
+              {piece.durationSeconds > 0 && ` (${watchThroughRate(piece.metrics, piece.durationSeconds).toFixed(0)}%)`}
+            </span>
+          )}
           <span>{piece.metrics.saves} saves</span>
           <span>{piece.metrics.dmsReceived} DMs</span>
         </div>
@@ -264,6 +275,7 @@ export function ContentCard({
           {piece.status === 'posted' && (
             <MetricsForm
               metrics={piece.metrics}
+              durationSeconds={piece.durationSeconds || 0}
               onSave={(m) => onMetricsChange(piece.id, m)}
             />
           )}
