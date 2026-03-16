@@ -349,4 +349,293 @@ And if you want me to build a version for your trade, DM me what you do. I'll ma
     durationSeconds: 90,
     notes: '',
   },
+  {
+    id: 'seed-08',
+    title: '"AI Is Coming for Your Job, Tradie."',
+    hook: "AI is coming for your job, tradie. Just not in the way you think.",
+    body: `[0:00-0:03] HOOK
+"AI is coming for your job, tradie."
+Text: "AI is coming for your job."
+[PAUSE. Hold eye contact. Let them react.]
+
+[0:03-0:05] REDIRECT
+"Just not in the way you think."
+Text: "Just not how you think."
+
+[0:05-0:15] THE FLIP
+"It's not replacing you on the tools. Nobody's sending a robot to frame a house. It's replacing the admin. The quoting, the invoicing, the scheduling, the follow-ups. The stuff you hate doing anyway."
+Text: "It's replacing the parts you hate."
+
+[0:15-0:22] THE PUNCH
+"The tradies who figure that out? They'll do the same work in half the admin time. The ones who don't? They'll still be quoting at midnight."
+Text: "Same work. Half the admin. Or quoting at midnight."
+
+[0:22-0:25] CTA
+"Which side are you on? Tell me."
+Text: "Which side?"`,
+    caption: `AI is coming for your job, tradie.
+
+Just not the way you think.
+
+It's not replacing you on the tools. Nobody's sending a robot to frame a house or wire a switchboard.
+
+It's replacing the admin. The quoting, the invoicing, the scheduling, the follow-ups. The stuff you hate doing anyway.
+
+The tradies who figure that out will do the same work in half the admin time.
+
+The ones who don't? Still quoting at midnight.
+
+#AITradie #TradieTips #AIForBusiness #AussieTradies #HotTake`,
+    filmingNotes: "Duration: 25s MAX. Talking head, straight to camera.\nThe PAUSE after 'coming for your job' is everything. Hold it for a full second.\nDon't rush the redirect. Let the fear land, then flip it.\nConfident, slightly amused energy on the flip. Not preachy.\nFilm on site if possible, hi-vis or work gear.",
+    format: 'reel',
+    pillar: 'hot-takes',
+    hookStyle: 'myth-bust',
+    frameworkTags: ['komadina', 'hormozi'],
+    status: 'scripted',
+    weekId: WEEK,
+    datePosted: null,
+    metrics: null,
+    durationSeconds: 25,
+    notes: '',
+  },
+  {
+    id: 'seed-09',
+    title: '"Your Apprentice Will Replace You."',
+    hook: "Your apprentice is going to replace you. Not because he's better on the tools.",
+    body: `[0:00-0:03] HOOK
+"Your apprentice is going to replace you."
+Text: "Your apprentice will replace you."
+[PAUSE. Let it sting.]
+
+[0:03-0:05] REDIRECT
+"Not because he's better on the tools."
+Text: "Not because he's better on the tools."
+
+[0:05-0:15] THE BODY
+"Because he grew up with AI. He'll quote jobs in ten minutes while you take an hour. He'll use tech to run his business while you're drowning in paperwork. Same trade, same skills on site. But he'll run circles around you on the business side."
+Text: "Same skills. But he runs circles around you off the tools."
+
+[0:15-0:20] THE CLOSE
+"The gap isn't talent. It's tools. And it's already opening."
+Text: "The gap isn't talent. It's tools."`,
+    caption: `Your apprentice is going to replace you.
+
+Not because he's better on the tools.
+
+Because he grew up with AI. He'll quote in 10 minutes while you take an hour. He'll use tech to manage his business while you're buried in admin.
+
+Same trade. Same skills on site. But he'll run circles around you off the tools.
+
+The gap isn't talent. It's tools. And it's already opening.
+
+Harsh? Maybe. But ignoring it won't make it less true.
+
+#AITradie #TradieBusiness #FutureOfWork #AussieTradies #HotTake`,
+    filmingNotes: "Duration: 20s MAX. Talking head, serious tone.\nThis one needs conviction. Don't smile.\nThe pause after 'replace you' is the hook. Hold it.\nFilm somewhere that looks like work, not a studio.\nThis will get angry comments. That's the point. Engagement.",
+    format: 'reel',
+    pillar: 'hot-takes',
+    hookStyle: 'challenge',
+    frameworkTags: ['komadina'],
+    status: 'scripted',
+    weekId: WEEK,
+    datePosted: null,
+    metrics: null,
+    durationSeconds: 20,
+    notes: '',
+  },
+  {
+    id: 'seed-10',
+    title: '"I Stopped Quoting Jobs."',
+    hook: "I stopped quoting jobs. My revenue went up.",
+    body: `[0:00-0:03] HOOK
+"I stopped quoting jobs."
+Text: "I stopped quoting jobs."
+[PAUSE]
+
+[0:03-0:05] THE KICKER
+"My revenue went up."
+Text: "Revenue went up."
+
+[0:05-0:15] THE EXPLANATION
+"I stopped quoting manually. I built an AI system that does it. Now quotes go out same day instead of three days later. I don't lose jobs to the tradie who replied first. The quotes are cleaner, faster, and I win more of them."
+Text: "Same day quotes. Win more jobs. AI does the work."
+
+[0:15-0:22] THE LESSON
+"I didn't work harder. I just stopped being the bottleneck in my own business."
+Text: "Stop being the bottleneck."
+
+[0:22-0:25] CTA
+"Want to see how it works? Follow me. I show everything."
+Text: "Follow. I show everything."`,
+    caption: `I stopped quoting jobs.
+
+Revenue went up.
+
+Not because I stopped doing work. Because I stopped doing it manually.
+
+I built an AI system that handles it. Quotes go out same day instead of three days later. Cleaner, faster, and I win more of them because I'm not the slowest to reply anymore.
+
+I didn't work harder. I just stopped being the bottleneck in my own business.
+
+Want to see how? I share everything here. Follow along.
+
+#AITradie #QuotingTips #TradeHacks #AussieTradies #BusinessAutomation`,
+    filmingNotes: "Duration: 25s MAX. Talking head, in ute or on site.\nDelivery: Casual, almost like you're telling a mate over lunch.\nThe hook is designed to sound like you quit. That's why they watch.\nDon't rush the redirect. Let the confusion sit.\nSmile slightly when you say 'revenue went up' - like you know it sounds wrong.",
+    format: 'reel',
+    pillar: 'systems',
+    hookStyle: 'curiosity-gap',
+    frameworkTags: ['komadina', 'hormozi'],
+    status: 'scripted',
+    weekId: WEEK,
+    datePosted: null,
+    metrics: null,
+    durationSeconds: 25,
+    notes: '',
+  },
+  {
+    id: 'seed-11',
+    title: '"90% of Tradies Charge the Wrong Rate."',
+    hook: "90% of trade businesses are charging the wrong rate. And I can prove it.",
+    body: `[0:00-0:03] HOOK
+"90% of trade businesses are charging the wrong rate."
+Text: "90% charge the wrong rate."
+
+[0:03-0:05] THE PROOF
+"And I can prove it."
+Text: "I can prove it."
+
+[0:05-0:15] THE DATA
+"I've run the numbers on over 50 trade businesses across Australia. Plumbers, sparkies, chippies, concreters. When you add up super, workers comp, leave loading, downtime, tools, and vehicles, almost every single one is undercharging. Most by fifteen to twenty-five bucks an hour. They just don't know it because nobody taught them how to calculate it properly."
+Text: "Undercharging by $15-$25/hr. On average."
+
+[0:15-0:22] THE IMPACT
+"On a team of five, that's sixty to a hundred grand a year you're giving away. For free. To your clients."
+Text: "$60-100K/yr. Gone."
+
+[0:22-0:25] CTA
+"Comment RATE if you want to know if you're one of them."
+Text: "Comment RATE"`,
+    caption: `90% of trade businesses are charging the wrong rate.
+
+I've run the numbers on 50+ trades across Australia. Plumbers, sparkies, chippies, concreters.
+
+When you add up super, workers comp, leave loading, downtime, tools, and vehicles, almost every single one is undercharging by $15-25/hr.
+
+On a team of 5, that's $60-100K a year going straight out the door. Not because the work's bad. Because the maths was never done properly.
+
+Comment RATE and I'll show you how to check yours.
+
+#AITradie #ChargeOutRate #TradieTips #AussieTradies #BusinessNumbers`,
+    filmingNotes: "Duration: 25s MAX. Talking head, serious energy.\nThis is a Pattern Reveal hook from Komadina. You have the data, they don't.\nLean into the authority of 'I've run the numbers.' That's genuine.\nThe CTA 'comment RATE' drives comments which feeds the algorithm.\nFilm from desk or ute. Slightly intense delivery.",
+    format: 'reel',
+    pillar: 'proof',
+    hookStyle: 'pattern-reveal',
+    frameworkTags: ['komadina', 'hormozi'],
+    status: 'scripted',
+    weekId: WEEK,
+    datePosted: null,
+    metrics: null,
+    durationSeconds: 25,
+    notes: '',
+  },
+  {
+    id: 'seed-12',
+    title: '"The $300K Tradies Aren\'t Better Than You."',
+    hook: "The tradies making $300K a year aren't better than you. They just know one number you don't.",
+    body: `[0:00-0:03] HOOK
+"The tradies making $300K a year aren't better than you."
+Text: "$300K tradies aren't better than you."
+
+[0:03-0:05] THE GAP
+"They just know one number you don't."
+Text: "They know one number you don't."
+
+[0:05-0:13] THE EXPLANATION
+"Their real cost per employee. Not the hourly rate. The actual, all-in cost with super, comp, leave, downtime, everything. Once you know that number, you know exactly what to charge. And you stop leaving money on the table."
+Text: "Real cost per employee = what to charge."
+
+[0:13-0:18] THE REFRAME
+"It's not about working harder. Every successful tradie I've spoken to says the same thing. Know your numbers and charge what you're worth."
+Text: "Know your numbers. Charge what you're worth."
+
+[0:18-0:20] CTA
+"Follow if you want to learn yours."
+Text: "Follow @theaitradie_"`,
+    caption: `The tradies pulling $300K a year aren't more skilled than you.
+
+They know one number you don't. Their real cost per employee.
+
+Not the hourly rate. The actual, all-in cost. Super, workers comp, leave loading, downtime, tools, vehicles. Everything on top.
+
+Once you know that number, you know exactly what to charge. You stop guessing. You stop underquoting. You stop leaving money on the table.
+
+Every successful tradie I've talked to says the same thing. Know your numbers and charge what you're worth.
+
+Follow if you want to learn how.
+
+#AITradie #TradieBusiness #ChargeOutRate #AussieTradies #BusinessGrowth`,
+    filmingNotes: "Duration: 20s MAX. Talking head, straight to camera.\nThis is an Identity Codex hook. You're showing the gap between where they are and where they could be.\nDon't be preachy. Be matter-of-fact, like you're stating something obvious.\nThe 'one number you don't' creates massive curiosity. They HAVE to keep watching.\nCalm, confident energy. Not hype.",
+    format: 'reel',
+    pillar: 'hot-takes',
+    hookStyle: 'curiosity-gap',
+    frameworkTags: ['komadina', 'hormozi'],
+    status: 'scripted',
+    weekId: WEEK,
+    datePosted: null,
+    metrics: null,
+    durationSeconds: 20,
+    notes: '',
+  },
+  {
+    id: 'seed-13',
+    title: '"Stop Telling Tradies to Just Charge More."',
+    hook: "Stop telling tradies to 'just charge more.' That's not how it works.",
+    body: `[0:00-0:03] HOOK
+"Stop telling tradies to just charge more."
+Text: "'Just charge more.' Worst advice in trades."
+
+[0:03-0:05] THE CALL OUT
+"That's not how it works."
+Text: "That's not how it works."
+
+[0:05-0:15] THE PROBLEM
+"Every business coach says the same thing. Just put your prices up. But if you don't know your actual costs, charging more is just a guess on top of a guess. You might still be losing money at the higher rate. Or you might price yourself out of work because you went too high without the data to back it."
+Text: "A guess on top of a guess."
+
+[0:15-0:22] THE REAL ANSWER
+"The answer isn't 'charge more.' It's 'know your real number.' Work out what each employee actually costs you, add your margin, and charge based on that. Not based on what someone on Instagram told you to do."
+Text: "Know your real number. Then charge based on data."
+
+[0:22-0:25] CTA
+"Disagree? Tell me why. I want to hear it."
+Text: "Disagree? Comments."`,
+    caption: `"Just charge more."
+
+That's the advice every business coach gives tradies.
+
+Here's the problem. If you don't know your actual costs, charging more is just a guess on top of a guess.
+
+You might still be losing money at the higher rate. Or you might price yourself out of work because you overshot.
+
+The answer isn't "charge more." It's "know your real number."
+
+Work out what each employee actually costs you. Super, comp, leave, downtime, tools, rego. Add your margin. Charge based on that.
+
+Not based on what some bloke on Instagram told you.
+
+Disagree? I want to hear it.
+
+#AITradie #TradieTips #ChargeOutRate #AussieTradies #HotTake`,
+    filmingNotes: "Duration: 25s MAX. Talking head, fired up energy.\nThis is a CONTRARIAN myth bust. You're calling out the entire business coaching industry.\nTradies who've heard 'just charge more' and felt it was hollow will LOVE this.\nSlightly frustrated energy, like you're sick of hearing bad advice.\nThis will get comments from coaches AND tradies. Algorithm gold.\nFilm on site. Real tradie calling out fake advice.",
+    format: 'reel',
+    pillar: 'hot-takes',
+    hookStyle: 'myth-bust',
+    frameworkTags: ['komadina', 'hormozi'],
+    status: 'scripted',
+    weekId: WEEK,
+    datePosted: null,
+    metrics: null,
+    durationSeconds: 25,
+    notes: '',
+  },
 ];

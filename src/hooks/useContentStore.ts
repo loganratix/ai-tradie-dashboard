@@ -21,16 +21,27 @@ export function useContentStore() {
     DEFAULT_STATE
   );
 
-  // Seed on first load if empty, or re-seed if version is outdated
+  // Seed on first load if empty, or merge new seed content if version is outdated
   const seeded = useRef(false);
   useEffect(() => {
     if (!seeded.current) {
-      if (state.content.length === 0 || state.version < 2) {
+      if (state.content.length === 0) {
+        // Fresh start: load all seed content
         seeded.current = true;
-        setState(() => ({ content: SEED_CONTENT, activeWeek: getWeekId(), version: 2 }));
+        setState(() => ({ content: SEED_CONTENT, activeWeek: getWeekId(), version: 3 }));
+      } else if (state.version < 3) {
+        // Merge: keep existing content (preserves metrics, status, notes), add new seed items
+        seeded.current = true;
+        const existingIds = new Set(state.content.map((c) => c.id));
+        const newItems = SEED_CONTENT.filter((s) => !existingIds.has(s.id));
+        setState((prev) => ({
+          ...prev,
+          content: [...prev.content, ...newItems],
+          version: 3,
+        }));
       }
     }
-  }, [state.content.length, state.version, setState]);
+  }, [state.content.length, state.version, setState, state.content]);
 
   const setActiveWeek = useCallback(
     (weekId: string) => {
